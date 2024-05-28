@@ -74,7 +74,7 @@ function isSelected($oldValue, $currentValue) {
             <label for="image" class="form-label">immagine</label>
             <input type="file" class="form-control" id="image" placeholder="Another input placeholder" name="image" onchange="showimage(event)">
         </div>
-        <img class="thumb w-25" style="height: 350px" id="thumb" alt="" src="/img/placeholder.avif">
+        <img class="thumb w-25" style="height: 350px" id="thumb" alt="" src="/img/placeholder.png">
 
 
 
