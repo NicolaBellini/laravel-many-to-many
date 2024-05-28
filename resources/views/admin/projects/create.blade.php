@@ -54,10 +54,10 @@
     </div><br>
 
     <label for="type_id" class="form-label">categoria</label>
-    <select name="type_id" class="form-select" id="type_id" aria-label="Default select example">
-        <option >seleziona una categoria</option>
+    <select   name="type_id" class="form-select" id="type_id" >
+        <option value="">Seleziona una categoria</option>
         @foreach ($types as $type)
-        <option @if (old('type_id')== $type->id) selected @endif  value="{{$type->id}}">{{$type->name}}</option>
+        <option @if (old('type_id')== $type->id) selected @endif  value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}">{{$type->name}}</option>
 
         @endforeach
 

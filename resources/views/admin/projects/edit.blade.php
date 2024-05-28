@@ -1,3 +1,9 @@
+@php
+function isSelected($oldValue, $currentValue) {
+    return $oldValue == $currentValue ? 'selected' : '';
+}
+@endphp
+
 @extends('layouts.admin')
 
 @section('content')
@@ -55,10 +61,10 @@
         </div><br>
 
         <label for="type_id" class="form-label">categoria</label>
-        <select name="type_id" class="form-select" id="type_id" aria-label="Default select example">
-            <option>Open this select menu</option>
+        <select  name="type_id" class="form-select" id="type_id" aria-label="Default select example">
+            <option value="">Seleziona una categoria</option>
             @foreach ($types as $type)
-            <option value="{{$type->id}}" @if (old('type_id', $type->id)== $type->id) selected @endif>{{$type->name}}</option>
+            <option value="{{ $type->id }}" @if (old('type_id', $project->type?->id)== $type->id) selected @endif>{{$type->name}}</option>
 
             @endforeach
 

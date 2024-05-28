@@ -37,7 +37,7 @@
 <div class="container-fluid d-flex ">
 <form action="{{route('admin.type.store')}}" method="post">
     @csrf
-    <label for="Name">Nome tipo</label>
+    <label for="name">Nome tipo</label>
     <input type="text" id="name" name="name" class="me-3">
 
     <button class="btn btn-succes" type="submit">crea</button>
