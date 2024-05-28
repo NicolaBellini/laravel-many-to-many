@@ -22,11 +22,26 @@ class typeController extends Controller
 
 
     // rotta custom per avere i progetti e i type
-    public function projectsType(){
+    public function projectsType(Type $type){
         $types = Type::all();
 
         return view('admin.projectsType', compact('types'));
     }
+
+
+
+    public function getTypeProjects(Type $type){
+
+
+        $projectsList = $type->Projects;
+        $projectCount=count($projectsList);
+        $direction='desc';
+        // dd($projectsList);
+
+
+        return view('admin.projects.index', compact('projectsList', 'projectCount', 'direction','type'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

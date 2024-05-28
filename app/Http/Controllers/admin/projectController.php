@@ -40,6 +40,18 @@ class projectController extends Controller
 
         return view('admin.projects.index', compact('projectsList', 'direction'));
     }
+
+
+    // funzione per avere tutti i ptogetti di un tipo
+
+    // public function getTypeProjects(Type $type){
+    //     $projectsList= $type->Projects();
+
+    //     return view('admin.projects.index', compact('projectsList', 'type'));
+    // }
+
+
+
     /**
      * Show the form for creating a new resource.
      */

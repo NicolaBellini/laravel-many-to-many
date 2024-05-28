@@ -20,7 +20,6 @@
       <th scope="col">tipo</th>
       <th scope="col">tecnologia</th>
       <th scope="col">Pre View</th>
-      <th scope="col"></th>
 
 
       <th scope="col">azioni</th>
@@ -34,7 +33,12 @@
         <th scope="row">{{$project->name}}</th>
         <td>{{$project->topic}}</td>
         <td>{{$project->difficulty}}</td>
-        <td>{{$project->type?->name}}</td>
+        <td>
+            @if ($project->type)
+
+                <a href="{{ route('admin.projects_by_type', $project->type) }}">{{$project->type->name}}</a>
+            @endif
+        </td>
 
         {{-- qui stampo le tecnologie --}}
         <td>
