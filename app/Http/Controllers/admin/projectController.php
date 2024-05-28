@@ -59,8 +59,6 @@ class projectController extends Controller
 
         // dd($request->all());
         $formData = $request->all();
-
-
         // verifico se l'immagine esiste
         if(array_key_exists('image', $formData)){
             // salvo l' immagine nello storage nella cartella upload e ottengo il percorso
@@ -68,7 +66,6 @@ class projectController extends Controller
             $originalName = $request->file('image')->getClientOriginalName();
             $formData['image_original_name'] = $originalName;
             $formData['image']= $imagePath;
-
         }
 
         // dd($formData);
@@ -85,13 +82,9 @@ class projectController extends Controller
             if(array_key_exists('technologies', $formData)){
                 $newProject->technologies()->attach($formData['technologies']);
             }
-
             // dd($newProject);
             return redirect()->route('admin.projects.index')->with('success','progetto aggiunto con successo');
         }
-
-
-
     }
 
     /**
@@ -107,11 +100,9 @@ class projectController extends Controller
      */
     public function edit(Project $project)
     {
-
-       $types= Type::all();
-
-
-        return view('admin.projects.edit', compact('project','types'));
+        $technologies = Technology::all();
+        $types= Type::all();
+        return view('admin.projects.edit', compact('project','types','technologies'));
 
     }
 

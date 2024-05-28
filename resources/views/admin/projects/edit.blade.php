@@ -42,6 +42,18 @@
             <input type="text" class="form-control @error('difficulty') is-invalid @enderror" id="formGroupExampleInput3" placeholder="Another input placeholder" name="difficulty" value="{{old('difficulty', $project->difficulty)}}">
         </div>
 
+        {{-- qui metto le checkbox per le tecnologie  --}}
+
+        <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
+            @foreach ( $technologies as $technology )
+
+                    <input type="checkbox" value="{{ $technology->id }}" name="technologies[]"
+                        @if ( $errors->any() && in_array($technology->id, old('technologies', [])) || !$errors->any() && $project->technologies->contains($technology)) checked @endif
+                        class="btn-check" id="technology{{ $technology->id }}" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="technology{{$technology->id}}">{{ $technology->name }}</label>
+            @endforeach
+        </div><br>
+
         <label for="type_id" class="form-label">categoria</label>
         <select name="type_id" class="form-select" id="type_id" aria-label="Default select example">
             <option>Open this select menu</option>
