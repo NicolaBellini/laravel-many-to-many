@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('project_technology', function (Blueprint $table) {
             // foreignKey di projects
             $table->unsignedBigInteger('project_id');
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             // foreignKey di Technology
             $table->unsignedBigInteger('technology_id');
-            $table->foreign('technology_id')->references('id')->on('technologies')->cascadeOnDelete();
+            $table->foreign('technology_id')->references('id')->on('technologies')->onDelete('cascade');
 
         });
     }

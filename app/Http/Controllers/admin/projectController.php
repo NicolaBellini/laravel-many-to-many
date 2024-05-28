@@ -80,12 +80,13 @@ class projectController extends Controller
 
             $newProject= new Project();
             $newProject->fill($formData);
-            // $newProject->name = $formData['name'];
-            // $newProject->topic = $formData['topic'];
-            // $newProject->difficulty = $formData['difficulty'];
-            // dd($newProject);
-            $newProject->save();
 
+            $newProject->save();
+            if(array_key_exists('technologies', $formData)){
+                $newProject->technologies()->attach($formData['technologies']);
+            }
+
+            // dd($newProject);
             return redirect()->route('admin.projects.index')->with('success','progetto aggiunto con successo');
         }
 
@@ -153,6 +154,8 @@ class projectController extends Controller
      */
     public function destroy(Project $project)
     {
+        // elimino anche la foreign
+        $project->technologies()->detach();
         $project->delete();
         return redirect()->route('admin.projects.index')->with('deleted',"Il progetto $project->name è stato eliminato con successo");
     }
