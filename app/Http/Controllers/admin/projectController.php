@@ -134,6 +134,13 @@ class projectController extends Controller
         // $exist = Project::where('name', $request->name)->first();
 
         $project->update($formData);
+
+        if(array_key_exists('technologies', $formData)){
+            $project->technologies()->sync($formData['technologies']);
+        }else{
+            // se non sono presenti tecnologie perchè le ho tolte le elimino dalle relazioni
+            $project->technologies()->detach();
+        }
         // dd($project);
         return redirect()->route('admin.projects.show', $project);
     }
