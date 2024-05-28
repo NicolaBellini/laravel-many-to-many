@@ -17,7 +17,9 @@
       <th scope="col"><a href="{{route('admin.orderBy', ['direction'=> $direction, 'column'=>'id'])}}">titolo</a></th>
       <th scope="col">argomento</th>
       <th scope="col">difficolta</th>
-      <th scope="col">Categoria</th>
+      <th scope="col">tipo</th>
+      <th scope="col">tecnologia</th>
+      <th scope="col">Pre View</th>
       <th scope="col"></th>
 
 
@@ -33,6 +35,16 @@
         <td>{{$project->topic}}</td>
         <td>{{$project->difficulty}}</td>
         <td>{{$project->type?->name}}</td>
+
+        {{-- qui stampo le tecnologie --}}
+        <td>
+            @forelse ($project->technologies as $technology )
+                <span class="badge text-bg-secondary">{{ $technology->name }}</span>
+            @empty
+
+            @endforelse
+        </td>
+
 
         <td><img src="{{asset('storage/'. $project->image)}}" style="height: 100px" onerror="this.src='/img/placeholder.avif'" alt=""></td>
         <td class="d-flex align-item-center" >

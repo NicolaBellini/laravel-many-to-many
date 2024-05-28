@@ -16,14 +16,17 @@ class project_technology_table_seeder extends Seeder
     public function run(): void
     {
         // faccio l' operazione per 100 volte in modo da avere più di una tecnologia per progetto
-        for($i=0;$i<100;$i++){
+    for ($i = 0; $i < 10; $i++) {
+        $project = Project::inRandomOrder()->first();
+        $technology_id = Technology::inRandomOrder()->first()->id;
 
-            $project = Project::inRandomOrder()->first();
-            $technology_id= Technology::inRandomOrder()->first()->id;
-
-            // dopo aver stabilito le variabil aggiungo la relazione nella tabella pivot
+        // controllo di univocità per evitare doppioni in fase di sviluppo
+        if (!$project->technologies()->where('technology_id', $technology_id)->exists()) {
+            //aggiungo la tecnologia se non c'è
             $project->technologies()->attach($technology_id);
-        }
+    }
+}
+
 
     }
 }
