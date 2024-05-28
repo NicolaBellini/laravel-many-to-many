@@ -10,6 +10,7 @@ use Illuminate\Validation\Rules\Exists;
 use App\Http\Requests\projectRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
+use App\Models\Technology;
 class projectController extends Controller
 {
     /**
@@ -44,9 +45,10 @@ class projectController extends Controller
      */
     public function create()
     {
-       $types= Type::all();
+        $types= Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**

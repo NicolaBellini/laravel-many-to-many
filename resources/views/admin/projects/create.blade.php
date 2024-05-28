@@ -40,8 +40,18 @@
       <label for="formGroupExampleInput3" class="form-label">difficoltà progetto</label>
       <input type="text" class="form-control @error('difficulty') is-invalid @enderror" id="formGroupExampleInput3" placeholder="difficoltà" name="difficulty" value="{{old('difficulty')}}">
     </div>
-    <label for="type_id" class="form-label">categoria</label>
 
+    {{-- qui metto le checkbox per le tecnologie  --}}
+
+    <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
+        @foreach ( $technologies as $technology )
+
+            <input type="checkbox" class="btn-check" id="technology{{$technology->id}}" autocomplete="off">
+            <label class="btn btn-outline-primary" for="technology{{$technology->id}}">{{ $technology->name }}</label>
+        @endforeach
+    </div><br>
+
+    <label for="type_id" class="form-label">categoria</label>
     <select name="type_id" class="form-select" id="type_id" aria-label="Default select example">
         <option >seleziona una categoria</option>
         @foreach ($types as $type)

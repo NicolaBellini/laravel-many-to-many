@@ -20,12 +20,12 @@ class project_technology_table_seeder extends Seeder
         $project = Project::inRandomOrder()->first();
         $technology_id = Technology::inRandomOrder()->first()->id;
 
-        // controllo di univocità per evitare doppioni in fase di sviluppo
-        if (!$project->technologies()->where('technology_id', $technology_id)->exists()) {
-            //aggiungo la tecnologia se non c'è
-            $project->technologies()->attach($technology_id);
+            // controllo di univocità per evitare doppioni in fase di sviluppo
+            if (!$project->technologies()->where('technology_id', $technology_id)->exists()) {
+                //aggiungo la tecnologia se non c'è
+                $project->technologies()->attach($technology_id);
+        }
     }
-}
 
 
     }
